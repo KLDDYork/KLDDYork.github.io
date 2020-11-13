@@ -136,7 +136,7 @@ function populateGrid(workbook) {
 
 function importExcel() {
     makeRequest('GET',
-        'https://arlgservices.co.uk/wp-content/export.xlsx',
+        'data.xlsx',
         // success
         function (data) {
             var workbook = convertDataToWorkbook(data);
