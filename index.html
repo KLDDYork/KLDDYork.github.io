@@ -1,286 +1,42 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>K&amp;L Development&amp;Design</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script>var __basePath = './';</script>
+    <style media="only screen">
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        html {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        body {
+            padding: 1rem;
+            overflow: auto;
+        }
+    </style>
+    	<script src="https://unpkg.com/xlsx-style@0.8.13/dist/xlsx.full.min.js"></script>
+        <script src="https://unpkg.com/@ag-grid-community/all-modules@24.1.0/dist/ag-grid-community.min.js"></script>
+                    <script src="https://unpkg.com/@ag-grid-enterprise/all-modules@24.1.0/dist/ag-grid-enterprise.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-	<section class="banner" role="banner">
-        <header id="header">
-            <div class="header-content clearfix">
-                <a class="logo" href="#"></a>
-                <nav class="navigation" role="navigation">
-                    <ul class="primary-nav">
-                        <li><a href="#features">Home</a></li>
-                        <li><a href="#works">Works</a></li>
-                        <li><a href="#teams">Our Team</a></li>
-                        <li><a href="footer">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <a href="#" class="nav-toggle">Menu<span></span></a>
-            </div><!-- header content -->
-        </header><!-- header -->
-        <div class="container">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="banner-text text-center">
-                    <h1>Simple. Clean. Powerful.</h1>
-                    <p style="font-size: 180%;">We here at K&amp;L Development&amp;Design Pride ourselfs on making Clean simple, but Powerful websites affordable for all types of businesses</p>
-                    <a href="#teams" class="btn btn-large">Find out more</a>
-                </div><!-- banner text -->
-            </div>
-        </div>
-    </section><!-- banner -->
-    <section id="features" class="features section">
-        <div class="container">
-            <div class="row">
-                
-                   
-                
-                <div class="col-md-4 col-sm-6 feature text-center">
-                    <span class="icon icon-desktop"></span>
-                    <div class="feature-content">
-                        <h5>Responsive Ready</h5>
-                        <p>All are website come Responsive ready that means your website will look amazing in desktop or moblie-view</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 feature text-center">
-                    <span class="icon icon-lightbulb"></span>
-                    <div class="feature-content">
-                        <h5>Modern Design</h5>
-                        <p>All of our websites have a clean simple feel but under the hood they pack some power.</p>
-						</div>
-						</div>
-                <div class="col-md-4 col-sm-6 feature text-center">
-                    <span class="icon icon-genius"></span>
-                    <div class="feature-content">
-                        <h5>Clean Code</h5>
-                        <p>We make sure that your website is clean not just on the outside but the inside too.</p>
-                    </div>
-                </div>
-                
-                </div>
-                
-                </div>
-            
-        
-    </section><!-- features -->
+    <div class="example-wrapper">
+    <button onclick="importExcel()" style="margin-bottom: 5px">Import Excel</button>
+    <div id="myGrid" class="ag-theme-alpine"></div>
+</div>
 
-    <section id="works" class="works section no-padding">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/img1.jpg" class="work-box">
-			 <img src="images/img1.jpg"> alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-2.jpg" class="work-box">
-                        <img src="images/work-2.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-3.jpg" class="work-box">
-                        <img src="images/work-3.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-4.jpg" class="work-box">
-                        <img src="images/work-4.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-5.jpg" class="work-box">
-                        <img src="images/work-5.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-6.jpg" class="work-box">
-                        <img src="images/work-6.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-7.jpg" class="work-box">
-                        <img src="images/work-7.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 work">
-                    <a href="images/work-8.jpg" class="work-box">
-                        <img src="images/work-8.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-caption">
-                                <h5>Project Name</h5>
-                                <p>Website Design</p>
-                            </div>
-                        </div><!-- overlay -->
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section><!-- works -->
-
-    <section id="teams" class="section teams">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="person">
-                        <img src="images/team-1.png" alt="" class="img-responsive">
-                        <div class="person-content">
-                            <h4>Karl Swatman</h4>
-                            <h5 class="role">Web Developer/Founder</h5>
-                            <p>Hey! I'm karl i guess ill tell you abit about myself. I love solving problems thats probably why i got into coding.
-							I also love Music, Photography and Nature</p>
-                        </div>
-                        <ul class="social-icons clearfix">
-                            
-                        </ul>
-                    </div><!-- person -->
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="person">
-                        <img src="images/team-2.jpg" alt="" class="img-responsive">
-                        <div class="person-content">
-                            <h4>Liam Swatman</h4>
-                            <h5 class="role">Web Designer/Founder</h5>
-                            <p>Hi! let me tell you a little bit about myself. I found my passion for web development/design when my brother showed how a website was made
-								after that i couldnt get enough of it so it became my full-time job. Also
-								I love dogs and camping and thats about it really.</p>
-								
-                        </div>
-					</div>
-                </div>
-					<h4>How We Started<h4>
-					<br />
-				   <p style="font-size: 20px;"> K&amp;L is a Web development and design company that make clean, simple but powerful websites for all.<br />
-							    <br />
-								We love people who have a passion and we love to make websites for those passions from a blog to small business nothing is to big or to small for us.<br>
-								 as Steve Jobs once said <q>People with passion can change the world</q><br />
-								<br>
-								 With over 5 years experience in web development and 4 years in web design.
-								 You can be sure your website will look professional and be affordable.
-								  
-								  
-								 
-								 
-								 
-                    
-                
-               
-                
-            
-        </div>
-    </section><!-- teams -->
-
-
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h5>Location</h5>
-                        <p>York<br>City Center</p>
-			    <p>07521412267</p>
-			 <p><a href="mailto:Karl.swatman@Gmail.com">Email Us.</a></p>
-			</div>
-                    <div class="footer-col col-md-4">
-                        <h5>Share with Love</h5>
-                        <ul class="footer-share">
-                            <li><a href="https://www.facebook.com/KLDDYork/"><i class="fa fa-facebook"></i></a></li>
-                            
-                        </ul>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        
-                    </div>
-                </div>
-            </div>
-        </div><!-- footer top -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="col-md-12">
-                    <p>Copyright © All Rights Reserved
-                </div>
-            </div>
-        </div>
-    </footer><!-- footer -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.flexslider-min.js"></script>
-    <script src="js/jquery.fancybox.pack.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/retina.min.js"></script>
-    <script src="js/modernizr.js"></script>
-    <script src="js/main.js"></script>
-    
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-       
-        ga('create', 'UA-XXXX-X');
-        ga('send', 'pageview');
-    </script>
+    <script src="example.js"></script>
 </body>
 </html>
