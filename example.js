@@ -1,41 +1,162 @@
 var columnDefs = [
   {
-    field: 'athlete',
+    field: 'Vehicle',
     filter: 'agSetColumnFilter',
     filterParams: {
       buttons: ['reset', 'apply'],
     },
   },
   {
-    field: 'age',
-    maxWidth: 100,
+    field: 'Timestamp 2',
     filter: 'agSetColumnFilter',
     filterParams: {
-      buttons: ['apply', 'reset'],
-      closeOnApply: true,
+      buttons: ['reset', 'apply'],
     },
   },
   {
-    field: 'country',
+    field: 'Waste Transfer Note',
     filter: 'agSetColumnFilter',
     filterParams: {
-      buttons: ['clear', 'apply'],
+      buttons: ['reset', 'apply'],
     },
   },
   {
-    field: 'year',
+    field: 'Hazardous Consignment Code',
     filter: 'agSetColumnFilter',
     filterParams: {
-      buttons: ['apply', 'cancel'],
-      closeOnApply: true,
+      buttons: ['reset', 'apply'],
     },
-    maxWidth: 100,
   },
-  { field: 'sport' },
-  { field: 'gold', filter: 'agNumberColumnFilter' },
-  { field: 'silver', filter: 'agNumberColumnFilter' },
-  { field: 'bronze', filter: 'agNumberColumnFilter' },
-  { field: 'total', filter: 'agNumberColumnFilter' },
+  {
+    field: 'Quantity',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Net weight',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Product',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Status',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Ticket',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Transaction type',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Orig.Ticket',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Round/Collection Number',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Remark',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Name (Client)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Description (Source)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Remark (Product)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Remark (Product)2',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Name 2 (Client)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Zip code (Client)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Source (Product)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Name (Haulier)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  {
+    field: 'Remark (Client)',
+    filter: 'agSetColumnFilter',
+    filterParams: {
+      buttons: ['reset', 'apply'],
+    },
+  },
+  
+  
+  
+  
 ];
 
 var gridOptions = {
@@ -78,7 +199,7 @@ var gridOptions = {
 } */
 
 /* set up XMLHttpRequest */
-var url = "https://arlgservices.co.uk/wp-content/export.xlsx";
+var url = "http://spindevelopment.co.uk/NovTest.xlsx";
 var oReq = new XMLHttpRequest();
 
 oReq.open("GET", url, true);
@@ -102,16 +223,28 @@ oReq.onload = function(e) {
 
     // we expect the following columns to be present
     var columns = {
-        'A': 'athlete',
-        'B': 'age',
-        'C': 'country',
-        'D': 'year',
-        'E': 'date',
-        'F': 'sport',
-        'G': 'gold',
-        'H': 'silver',
-        'I': 'bronze',
-        'J': 'total'
+        'A': 'Vehicle',
+        'B': 'Timestamp 2',
+        'C': 'Waste Transfer Note',
+        'D': 'Hazardous Consignment Code',
+        'E': 'Quantity',
+        'F': 'Net weight',
+        'G': 'Product',
+        'H': 'Status',
+        'I': 'Ticket',
+        'J': 'Transaction type',
+		'K': 'Orig.Ticket',
+		'L': 'Round/Collection Number',
+		'M': 'Remark',
+		'N': 'Name (Client)',
+		'O': 'Description (Source)',
+		'P': 'Remark (Product)',
+		'Q': 'Remark (Product)2',
+		'R': 'Name 2 (Client)',
+		'S': 'Zip code (Client)',
+		'T': 'Source (Product)',
+		'U': 'Name (Haulier)',
+		'V': 'Remark (Client)'
     };
 
     var rowData = [];
@@ -123,7 +256,7 @@ oReq.onload = function(e) {
     while (worksheet['A' + rowIndex]) {
         var row = {};
         Object.keys(columns).forEach(function(column) {
-            row[columns[column]] = worksheet[column + rowIndex].w;
+            row[columns[column]] = worksheet[(column + rowIndex)].w;
         });
 
         rowData.push(row);
