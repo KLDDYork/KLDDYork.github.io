@@ -3,7 +3,7 @@ var columnDefs = [
     field: 'Vehicle',
     filter: 'agSetColumnFilter',
     filterParams: {
-      buttons: ['reset', 'apply'],
+      excelMode: 'windows',
     },
   },
   {
