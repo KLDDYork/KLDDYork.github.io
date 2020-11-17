@@ -199,7 +199,7 @@ var gridOptions = {
 } */
 
 /* set up XMLHttpRequest */
-var url = "http://spindevelopment.co.uk/NovTest.xlsx";
+var url = "https://klddyork.github.io/NovTest.xlsx";
 var oReq = new XMLHttpRequest();
 
 oReq.open("GET", url, true);
