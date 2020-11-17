@@ -62,7 +62,7 @@ var gridOptions = {
 };
 
 // XMLHttpRequest in promise format
-function makeRequest(method, url, success, error) {
+/* function makeRequest(method, url, success, error) {
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("GET", url, true);
     httpRequest.responseType = "arraybuffer";
@@ -75,28 +75,29 @@ function makeRequest(method, url, success, error) {
         error(httpRequest.response);
     };
     httpRequest.send();
-}
+} */
 
-// read the raw data and convert it to a XLSX workbook
-function convertDataToWorkbook(data) {
-    /* convert data to binary string */
-    var data = new Uint8Array(data);
-    var arr = new Array();
+/* set up XMLHttpRequest */
+var url = "https://arlgservices.co.uk/wp-content/export.xlsx";
+var oReq = new XMLHttpRequest();
 
-    for (var i = 0; i !== data.length; ++i) {
-        arr[i] = String.fromCharCode(data[i]);
-    }
+oReq.open("GET", url, true);
+oReq.responseType = "arraybuffer";
 
-    var bstr = arr.join("");
+oReq.onload = function(e) {
+  var arraybuffer = oReq.response;
 
-    return XLSX.read(bstr, {type: "binary"});
-}
+  /* convert data to binary string */
+  var data = new Uint8Array(arraybuffer);
+  var arr = new Array();
+  for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+  var bstr = arr.join("");
 
-// pull out the values we're after, converting it into an array of rowData
+  /* Call XLSX */
+  var workbook = XLSX.read(bstr, {type:"binary"});
 
-function populateGrid(workbook) {
-    // our data is in the first sheet
-    var firstSheetName = workbook.SheetNames[0];
+  /* DO SOMETHING WITH workbook HERE */
+  var firstSheetName = workbook.SheetNames[0];
     var worksheet = workbook.Sheets[firstSheetName];
 
     // we expect the following columns to be present
@@ -132,23 +133,50 @@ function populateGrid(workbook) {
 
     // finally, set the imported rowData into the grid
     gridOptions.api.setRowData(rowData);
+	populateGrid(workbook);
+	
+	var workbook = convertDataToWorkbook(data);
+
+            populateGrid(workbook);
 }
 
-function importExcel() {
+oReq.send();
+
+// read the raw data and convert it to a XLSX workbook
+/* function convertDataToWorkbook(data) { */
+    /* convert data to binary string */
+   /*  var data = new Uint8Array(data);
+    var arr = new Array();
+
+    for (var i = 0; i !== data.length; ++i) {
+        arr[i] = String.fromCharCode(data[i]);
+    }
+
+    var bstr = arr.join("");
+
+    return XLSX.read(bstr, {type: "binary"});
+} */
+
+// pull out the values we're after, converting it into an array of rowData
+
+
+    // our data is in the first sheet
+    
+
+
+/* function importExcel() {
     makeRequest('GET',
         'data.xlsx',
         // success
         function (data) {
-            var workbook = convertDataToWorkbook(data);
-
-            populateGrid(workbook);
+            
         },
         // error
         function (error) {
             throw error;
         }
     );
-}
+} */
 
 // wait for the document to be loaded, otherwise
 // ag-Grid will not find the div in the document.
