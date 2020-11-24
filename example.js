@@ -165,6 +165,7 @@ var gridOptions = {
     flex: 1,
     minWidth: 150,
     filter: true,
+	sortable: true,
   },
   onFilterChanged: function (e) {
     console.log('onFilterChanged', e);
