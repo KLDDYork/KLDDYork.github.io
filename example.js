@@ -298,19 +298,15 @@ oReq.send();
     
 
 
-/* function importExcel() {
-    makeRequest('GET',
-        'data.xlsx',
-        // success
-        function (data) {
-            
-        },
-        // error
-        function (error) {
-            throw error;
-        }
-    );
-} */
+ function importExcel() {
+    var Airtable = require('airtable');
+var base = new Airtable({apiKey: 'YOUR_API_KEY'}).base('appBHd3R2X30KrOqU');
+
+base('November 2020').find('recumT22q9Q6TasDc', function(err, record) {
+    if (err) { console.error(err); return; }
+    console.log('Retrieved', record.id);
+});
+} 
 
 // wait for the document to be loaded, otherwise
 // ag-Grid will not find the div in the document.
