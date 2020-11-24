@@ -300,7 +300,7 @@ oReq.send();
 
  function importExcel() {
     var Airtable = require('airtable');
-var base = new Airtable({apiKey: 'YOUR_API_KEY'}).base('appBHd3R2X30KrOqU');
+var base = new Airtable({apiKey: 'keySlku58xFPPDxYR'}).base('appBHd3R2X30KrOqU');
 
 base('November 2020').find('recumT22q9Q6TasDc', function(err, record) {
     if (err) { console.error(err); return; }
