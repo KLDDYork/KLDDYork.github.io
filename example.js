@@ -10,7 +10,7 @@ var columnDefs = [
     field: 'Timestamp 2',
     filter: 'agSetColumnFilter',
     filterParams: {
-      buttons: ['reset', 'apply'],
+      excelMode: 'windows',
     },
   },
   {
