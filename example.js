@@ -8,7 +8,7 @@ var columnDefs = [
   },
   {
     field: 'Timestamp 2',
-    filter: 'agSetColumnFilter',
+    filter: 'agDateColumnFilter',
     filterParams: {
       excelMode: 'windows',
     },
