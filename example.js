@@ -4,6 +4,9 @@ var columnDefs = [
     filter: 'agSetColumnFilter',
     filterParams: {
       excelMode: 'windows',
+	  headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
     },
   },
   {
