@@ -278,9 +278,9 @@ oReq.onload = function(e) {
     gridOptions.api.setRowData(rowData);
 	//populateGrid(workbook);
 	
-	var workbook = convertDataToWorkbook(data);
+	//var workbook = convertDataToWorkbook(data);
 
-            populateGrid(workbook);
+            //populateGrid(workbook);
 }
 
 oReq.send();
