@@ -1,14 +1,13 @@
 var columnDefs = [
   {
-	headerName: 'Vehicle',
     field: 'Vehicle',
     filter: 'agSetColumnFilter',
-    
-      
+    filterParams: {
+      excelMode: 'windows',
 	  headerCheckboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
       checkboxSelection: true,
-    
+    },
   },
   {
     field: 'Timestamp 2',
