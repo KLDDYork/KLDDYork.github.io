@@ -188,9 +188,9 @@ var gridOptions = {
   
 };
 
-function onQuickFilterChanged() {
+/* function onQuickFilterChanged() {
   gridOptions.api.setQuickFilter(document.getElementById('quickFilter').value);
-}
+} */
 
 // XMLHttpRequest in promise format
 /* function makeRequest(method, url, success, error) {
@@ -209,31 +209,144 @@ function onQuickFilterChanged() {
 } */
 
 /* set up XMLHttpRequest */
-var url = "https://klddyork.github.io/NovTest.xlsx";
+/* var url = "https://klddyork.github.io/NovTest.xlsx";
 var oReq = new XMLHttpRequest();
 
 oReq.open("GET", url, true);
-oReq.responseType = "arraybuffer";
+oReq.responseType = "arraybuffer"; */
 
-oReq.onload = function(e) {
-  var arraybuffer = oReq.response;
+/* oReq.onload = function(e) {
+  var arraybuffer = oReq.response; */
 
   /* convert data to binary string */
-  var data = new Uint8Array(arraybuffer);
+  /* var data = new Uint8Array(arraybuffer);
   var arr = new Array();
   for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-  var bstr = arr.join("");
+  var bstr = arr.join(""); */
 
   /* Call XLSX */
-  var workbook = XLSX.read(bstr, {type:"binary"});
+/*   var workbook = XLSX.read(bstr, {type:"binary"}); */
 
   /* DO SOMETHING WITH workbook HERE */
-  var firstSheetName = workbook.SheetNames[0];
+ /*  var firstSheetName = workbook.SheetNames[0];
+    var worksheet = workbook.Sheets[firstSheetName]; */
+
+    // we expect the following columns to be present
+    /* var columns = {
+        'A': 'Vehicle',
+        'B': 'Timestamp 2',
+        'C': 'Waste Transfer Note',
+        'D': 'Hazardous Consignment Code',
+        'E': 'Quantity',
+        'F': 'Net weight',
+        'G': 'Product',
+        'H': 'Status',
+        'I': 'Ticket',
+        'J': 'Transaction type',
+		'K': 'Orig.Ticket',
+		'L': 'Round/Collection Number',
+		'M': 'Remark',
+		'N': 'Name (Client)',
+		'O': 'Description (Source)',
+		'P': 'Remark (Product)',
+		'Q': 'Description (Product)',
+		'R': 'Name 2 (Client)',
+		'S': 'Zip code (Client)',
+		'T': 'Source (Product)',
+		'U': 'Name (Haulier)',
+		'V': 'Remark (Client)'
+    }; */
+
+    /* var rowData = []; */
+
+    // start at the 2nd row - the first row are the headers
+    /* var rowIndex = 2; */
+
+    // iterate over the worksheet pulling out the columns we're expecting
+    /* while (worksheet['A' + rowIndex]) {
+        var row = {};
+        Object.keys(columns).forEach(function(column) {
+            row[columns[column]] = worksheet[(column + rowIndex)].w;
+        });
+
+        rowData.push(row);
+
+        rowIndex++;
+    } */
+
+    // finally, set the imported rowData into the grid
+   /*  gridOptions.api.setRowData(rowData); */
+	//populateGrid(workbook);
+	
+	//var workbook = convertDataToWorkbook(data);
+
+            //populateGrid(workbook);
+}
+
+/* oReq.send(); */
+
+// read the raw data and convert it to a XLSX workbook
+/* function convertDataToWorkbook(data) { */
+    /* convert data to binary string */
+   /*  var data = new Uint8Array(data);
+    var arr = new Array();
+
+    for (var i = 0; i !== data.length; ++i) {
+        arr[i] = String.fromCharCode(data[i]);
+    }
+
+    var bstr = arr.join("");
+
+    return XLSX.read(bstr, {type: "binary"});
+} */
+
+// pull out the values we're after, converting it into an array of rowData
+
+
+    // our data is in the first sheet
+    
+
+// XMLHttpRequest in promise format
+function makeRequest(method, url, success, error) {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("GET", url, true);
+    httpRequest.responseType = "arraybuffer";
+
+    httpRequest.open(method, url);
+    httpRequest.onload = function () {
+        success(httpRequest.response);
+    };
+    httpRequest.onerror = function () {
+        error(httpRequest.response);
+    };
+    httpRequest.send();
+}
+
+// read the raw data and convert it to a XLSX workbook
+function convertDataToWorkbook(data) {
+    /* convert data to binary string */
+    var data = new Uint8Array(data);
+    var arr = new Array();
+
+    for (var i = 0; i !== data.length; ++i) {
+        arr[i] = String.fromCharCode(data[i]);
+    }
+
+    var bstr = arr.join("");
+
+    return XLSX.read(bstr, {type: "binary"});
+}
+
+// pull out the values we're after, converting it into an array of rowData
+
+function populateGrid(workbook) {
+    // our data is in the first sheet
+    var firstSheetName = workbook.SheetNames[0];
     var worksheet = workbook.Sheets[firstSheetName];
 
     // we expect the following columns to be present
     var columns = {
-        'A': 'Vehicle',
+       'A': 'Vehicle',
         'B': 'Timestamp 2',
         'C': 'Waste Transfer Note',
         'D': 'Hazardous Consignment Code',
@@ -266,7 +379,7 @@ oReq.onload = function(e) {
     while (worksheet['A' + rowIndex]) {
         var row = {};
         Object.keys(columns).forEach(function(column) {
-            row[columns[column]] = worksheet[(column + rowIndex)].w;
+            row[columns[column]] = worksheet[column + rowIndex].w;
         });
 
         rowData.push(row);
@@ -276,37 +389,23 @@ oReq.onload = function(e) {
 
     // finally, set the imported rowData into the grid
     gridOptions.api.setRowData(rowData);
-	//populateGrid(workbook);
-	
-	//var workbook = convertDataToWorkbook(data);
-
-            //populateGrid(workbook);
 }
 
-oReq.send();
+function importExcel() {
+    makeRequest('GET',
+        'https://klddyork.github.io/NovTest.xlsx',
+        // success
+        function (data) {
+            var workbook = convertDataToWorkbook(data);
 
-// read the raw data and convert it to a XLSX workbook
-/* function convertDataToWorkbook(data) { */
-    /* convert data to binary string */
-   /*  var data = new Uint8Array(data);
-    var arr = new Array();
-
-    for (var i = 0; i !== data.length; ++i) {
-        arr[i] = String.fromCharCode(data[i]);
-    }
-
-    var bstr = arr.join("");
-
-    return XLSX.read(bstr, {type: "binary"});
-} */
-
-// pull out the values we're after, converting it into an array of rowData
-
-
-    // our data is in the first sheet
-    
-
-
+            populateGrid(workbook);
+        },
+        // error
+        function (error) {
+            throw error;
+        }
+    );
+}
 
 
 // wait for the document to be loaded, otherwise
