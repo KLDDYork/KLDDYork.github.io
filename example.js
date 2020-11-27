@@ -250,7 +250,7 @@ oReq.onload = function(e) {
 		'N': 'Name (Client)',
 		'O': 'Description (Source)',
 		'P': 'Remark (Product)',
-		'Q': 'Remark (Product)2',
+		'Q': 'Description (Product)',
 		'R': 'Name 2 (Client)',
 		'S': 'Zip code (Client)',
 		'T': 'Source (Product)',
@@ -277,7 +277,7 @@ oReq.onload = function(e) {
 
     // finally, set the imported rowData into the grid
     gridOptions.api.setRowData(rowData);
-	populateGrid(workbook);
+	//populateGrid(workbook);
 	
 	var workbook = convertDataToWorkbook(data);
 
@@ -308,15 +308,7 @@ oReq.send();
     
 
 
- function importExcel() {
-    var Airtable = require('airtable');
-var base = new Airtable({apiKey: 'keySlku58xFPPDxYR'}).base('appBHd3R2X30KrOqU');
 
-base('November 2020').find('recumT22q9Q6TasDc', function(err, record) {
-    if (err) { console.error(err); return; }
-    console.log('Retrieved', record.id);
-});
-} 
 
 // wait for the document to be loaded, otherwise
 // ag-Grid will not find the div in the document.
