@@ -170,6 +170,8 @@ var gridOptions = {
     filter: true,
 	sortable: true,
   },
+  suppressRowClickSelection: true,
+  rowSelection: 'multiple',
   onFilterChanged: function (e) {
     console.log('onFilterChanged', e);
     console.log('gridApi.getFilterModel() =>', e.api.getFilterModel());
@@ -185,6 +187,10 @@ var gridOptions = {
   
   
 };
+
+function onQuickFilterChanged() {
+  gridOptions.api.setQuickFilter(document.getElementById('quickFilter').value);
+}
 
 // XMLHttpRequest in promise format
 /* function makeRequest(method, url, success, error) {
