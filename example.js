@@ -1,20 +1,39 @@
+var filterParams = {
+  comparator: function (filterLocalDateAtMidnight, cellValue) {
+    var dateAsString = cellValue;
+    var dateParts = dateAsString.split('/');
+    var cellDate = new Date(
+      Number(dateParts[2]),
+      Number(dateParts[1]) - 1,
+      Number(dateParts[0])
+    );
+
+    if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+      return 0;
+    }
+
+    if (cellDate < filterLocalDateAtMidnight) {
+      return -1;
+    }
+
+    if (cellDate > filterLocalDateAtMidnight) {
+      return 1;
+    }
+  },
+   browserDatePicker: true,
+};
+
+
 var columnDefs = [
   {
     field: 'Vehicle',
     filter: 'agSetColumnFilter',
-    filterParams: {
-      excelMode: 'windows',
-	  headerCheckboxSelection: true,
-      headerCheckboxSelectionFilteredOnly: true,
-      checkboxSelection: true,
-    },
+    filterParams: filterParams,
   },
   {
     field: 'Timestamp 2',
     filter: 'agDateColumnFilter',
-    filterParams: {
-      buttons: ['reset', 'apply'],
-    },
+    filterParams: filterParams,
   },
   {
     field: 'Waste Transfer Note',
@@ -170,20 +189,6 @@ var gridOptions = {
     filter: true,
 	sortable: true,
   },
-  suppressRowClickSelection: true,
-  rowSelection: 'multiple',
-  onFilterChanged: function (e) {
-    console.log('onFilterChanged', e);
-    console.log('gridApi.getFilterModel() =>', e.api.getFilterModel());
-  },
-  onFilterModified: function (e) {
-    console.log('onFilterModified', e);
-    console.log('filterInstance.getModel() =>', e.filterInstance.getModel());
-    console.log(
-      'filterInstance.getModelFromUi() =>',
-      e.filterInstance.getModelFromUi()
-    );
-  },
   
   
 };
@@ -281,7 +286,7 @@ oReq.responseType = "arraybuffer"; */
 	//var workbook = convertDataToWorkbook(data);
 
             //populateGrid(workbook);
-}
+/* } */
 
 /* oReq.send(); */
 
